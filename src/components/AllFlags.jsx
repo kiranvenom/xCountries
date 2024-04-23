@@ -6,8 +6,14 @@ const AllFlags = () => {
 	const [countries, setCountries] = useState([]);
 
 	const getCountries = async () => {
-		const { data } = await axios.get('https://restcountries.com/v3.1/all');
-		setCountries(data);
+		try {
+			const { data } = await axios.get(
+				'https://restcountries.com/v3.1/all',
+			);
+			setCountries(data);
+		} catch (error) {
+			console.error(error);
+		}
 	};
 
 	useEffect(() => {
